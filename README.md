@@ -6,7 +6,7 @@ An Apache container loading static html files.
 
 These instructions will cover usage information for the docker container
 
-### Prerequisities for local
+### Prerequisities for Local Deployment
 
 In order to run this container you'll need docker installed.
 

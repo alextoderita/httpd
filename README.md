@@ -18,7 +18,7 @@ In order to run this container you'll need docker installed.
 
 #### Build and run the container locally
 
-Build the httpd docker image
+Build the httpd docker image:
 
 ```shell
 $ docker build -t httpd .
@@ -39,15 +39,14 @@ $ docker build -t httpd .
  => => naming to docker.io/library/httpd                                                                                                    0.0s
 ```
 
-Start the httpd container locally
+Start the httpd container locally:
 
 ```shell
 $ docker run -dit --name httpd -p 8080:80 httpd
 3ef3a8ed56bcf8f0bdbd9af3d8d6dc4362f23ad1ba8a68ee25a623b5fdf6e75a
 ```
 
-Check the response of the container listening on http://localhost:8080
-
+Check the response of the container running locally:
 ```shell
 $ curl -v http://localhost:8080
 *   Trying 127.0.0.1:8080...
@@ -77,12 +76,12 @@ $ curl -v http://localhost:8080
 
 #### Publish the docker image and run the application in OpenShift
 
-Tag the docker image to be published to an external docker registry
+Tag the docker image to be published to an external docker registry:
 ```shell
 docker tag httpd:latest default-route-openshift-image-registry.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com/default/httpd:latest
 ```
 
-Push the previously tagged image to an external docker registry
+Push the previously tagged image to an external docker registry:
 ```shell
 $ docker push default-route-openshift-image-registry.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com/default/httpd:latest
 The push refers to repository [default-route-openshift-image-registry.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com/default/httpd]
@@ -95,7 +94,7 @@ fad7e2250d8f: Pushed
 latest: digest: sha256:18236a491ffadb9e7ae3fdfc68cc0131148fa5f9004bc059c844a432106b3b72 size: 1573
 ```
 
-Deploy a new OpenShift app called httpd
+Deploy a new OpenShift app called httpd:
 ```shell
 $ oc new-app httpd --name=httpd
 --> Found image d4c8d52 (4 minutes old) in image stream "default/httpd" under tag "latest" for "httpd"
@@ -103,7 +102,6 @@ $ oc new-app httpd --name=httpd
     deployment.apps "httpd" created
     service "httpd" created
 --> Success
-Alexs-MacBook-Pro:httpd alextoderita$ oc expose service/httpd
 ```
 
 Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
@@ -112,14 +110,14 @@ $ oc expose service/httpd
 route.route.openshift.io/httpd exposed
 ```
 
-Identify the route/FQDN port number for the exposed application
+Identify the route/FQDN port number for the exposed application:
 ```shell
 $ oc get route httpd
 NAME    HOST/PORT                                                           PATH   SERVICES   PORT     TERMINATION   WILDCARD
 httpd   httpd-default.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com          httpd      80-tcp                 None
 ```
 
-Check the response of the publicly exposed app 
+Check the response of the publicly exposed app:
 
 ```shell
 $ curl -v http://httpd-default.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com

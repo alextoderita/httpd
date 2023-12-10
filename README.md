@@ -4,9 +4,9 @@ An Apache container loading static html files.
 
 ## Getting Started
 
-These instructions will cover usage information for the docker container
+These instructions will cover deployment on Local and on Red Hat OpenShift Service on AWS (ROSA) for the docker container
 
-### Prerequisities for Local Deployment
+### Prerequisities for Local Deployments
 
 In order to run this container you'll need docker installed.
 

@@ -21,7 +21,7 @@ In order to run this container you'll need docker installed.
 Build the httpd docker image:
 
 ```shell
-$ docker build -t httpd .
+$ docker build . --tag httpd:latest
 [+] Building 1.2s (8/8) FINISHED                                                                                            docker:desktop-linux
  => [internal] load .dockerignore                                                                                                           0.0s
  => => transferring context: 2B                                                                                                             0.0s

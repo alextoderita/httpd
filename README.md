@@ -113,8 +113,8 @@ route.route.openshift.io/httpd exposed
 Identify the route/FQDN port number for the exposed application:
 ```shell
 $ oc get route httpd
-NAME    HOST/PORT                                                           PATH   SERVICES   PORT     TERMINATION   WILDCARD
-httpd   httpd-default.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com          httpd      80-tcp                 None
+NAME    HOST/PORT                                                           PATH   SERVICES   PORT     TERMINATION     WILDCARD
+httpd   httpd-default.apps.rosa.rosa-hcp-public.gbk1.p3.openshiftapps.com          httpd      80-tcp   edge/Redirect   None
 ```
 
 Check the response of the publicly exposed app:
